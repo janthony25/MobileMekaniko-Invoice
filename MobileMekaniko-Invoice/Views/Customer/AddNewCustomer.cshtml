@@ -1,0 +1,18 @@
+﻿@model MobileMekaniko_Invoice.Models.Dto.AddCustomerDto
+
+<h2>Add New Customer</h2>
+
+<form asp-controller="Customer" asp-action="AddNewCustomer" method="post">
+    <div class="form-group">
+        <label asp-for="CustomerName"></label>
+        <input asp-for="CustomerName" />
+        <span asp-validation-for="CustomerName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CustomerEmail"></label>
+        <input asp-for="CustomerEmail" />
+        <span asp-validation-for="CustomerEmail"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-controller="Customer" asp-action="GetCustomerList">Back to List</a>
+</form>

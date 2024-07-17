@@ -1,0 +1,32 @@
+﻿@model List<MobileMekaniko_Invoice.Models.Dto.CustomerCarDto>
+
+<h2>Customer Details</h2>
+
+<div class="container">
+        <p>@Model.FirstOrDefault().CustomerId</p>
+        <p>@Model.FirstOrDefault().CustomerName</p>
+        <p>@Model.FirstOrDefault().CustomerEmail</p>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Car Rego</th>
+            <th>Car Make</th>
+            <th>Car Model</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var car in Model)
+        {
+            <tr>
+                <td>@car.CarRego</td>
+                <td>@car.CarMakeName</td>
+                <td>@car.CarModel</td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
