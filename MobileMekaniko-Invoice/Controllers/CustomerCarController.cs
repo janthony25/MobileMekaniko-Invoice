@@ -16,10 +16,7 @@ namespace MobileMekaniko_Invoice.Controllers
         public async Task<IActionResult> GetCustomerCar(int id)
         {
             var customerCar = await _customerCarRepository.GetCustomerCarsByIdAsync(id);
-            if (customerCar == null || !customerCar.Any())
-            {
-                return NotFound();
-            }
+           
             return View(customerCar);
         }
     }

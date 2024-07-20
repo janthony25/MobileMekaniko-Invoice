@@ -9,6 +9,9 @@ namespace MobileMekaniko_Invoice.Models.Entities
         public required string CustomerName { get; set; }
         public string? CustomerEmail { get; set; }
         public string? PaymentStatus { get; set; }
+
+        // Forgot to add this column in the table
+        public string? CustomerNumber { get; set; }
         public ICollection<tblCar>? tblCar { get; set; }
     }
 }

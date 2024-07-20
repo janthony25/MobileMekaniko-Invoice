@@ -7,5 +7,9 @@ namespace MobileMekaniko_Invoice.Repository.IRepository
         Task<List<CustomerSummaryDto>> GetCustomerSummaryAsync();
 
         Task AddNewCustomerAsync(AddCustomerDto customerDto);
+
+        Task DeleteCustomerByIdAsync(int customerId);
+
+        Task<CustomerSummaryDto> GetCustomerById(int id);
     }
 }

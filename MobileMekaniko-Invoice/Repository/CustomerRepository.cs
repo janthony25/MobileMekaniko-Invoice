@@ -21,12 +21,38 @@ namespace MobileMekaniko_Invoice.Repository
             {
                 CustomerName = customerDto.CustomerName,
                 CustomerEmail = customerDto.CustomerEmail,
+                CustomerNumber = customerDto.CustomerNumber,
             };
 
                 _data.tblCustomer.AddAsync(customer);
                 await _data.SaveChangesAsync();
 
                 
+        }
+
+        public async Task DeleteCustomerByIdAsync(int customerId)
+        {
+            var customer = await _data.tblCustomer.FirstOrDefaultAsync(c => c.CustomerId == customerId);
+            if(customer != null)
+            {
+                _data.tblCustomer.Remove(customer);
+                await _data.SaveChangesAsync();
+            }
+
+        }
+
+        public async Task<CustomerSummaryDto> GetCustomerById(int id)
+        {
+            return await _data.tblCustomer
+              .Where(c => c.CustomerId == id)
+              .Select(c => new CustomerSummaryDto
+              {
+                  CustomerId = c.CustomerId,
+                  CustomerName = c.CustomerName,
+                  CustomerEmail = c.CustomerEmail,
+                  CustomerNumber = c.CustomerNumber
+              })
+              .FirstOrDefaultAsync();
         }
 
         public async Task<List<CustomerSummaryDto>> GetCustomerSummaryAsync()
@@ -36,8 +62,11 @@ namespace MobileMekaniko_Invoice.Repository
                 {
                     CustomerId = c.CustomerId,
                     CustomerName = c.CustomerName,
-                    CustomerEmail = c.CustomerEmail
+                    CustomerEmail = c.CustomerEmail,
+                    CustomerNumber = c.CustomerNumber
                 }).ToListAsync();
         }
+
+       
     }
 }

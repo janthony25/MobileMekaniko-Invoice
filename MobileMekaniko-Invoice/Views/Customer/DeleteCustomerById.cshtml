@@ -1,0 +1,24 @@
+﻿@model List<MobileMekaniko_Invoice.Models.Entities.tblCustomer>
+
+<h2>Delete Customer</h2>
+
+<form asp-controller="Customer" asp-action="AddNewCustomer" method="post">
+   <input asp-for="@Model.FirstOrDefault().CustomerId" />
+    <div class="form-group">
+        <label asp-for="@Model.FirstOrDefault().CustomerName"></label>
+        <input asp-for="@Model.FirstOrDefault().CustomerName" disabled />
+        <span asp-validation-for="@Model.FirstOrDefault().CustomerName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.FirstOrDefault().CustomerEmail"></label>
+        <input asp-for="@Model.FirstOrDefault().CustomerEmail" disabled />
+        <span asp-validation-for="@Model.FirstOrDefault().CustomerEmail"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.FirstOrDefault().CustomerNumber"></label>
+        <input asp-for="@Model.FirstOrDefault().CustomerNumber" disabled />
+        <span asp-validation-for="@Model.FirstOrDefault().CustomerNumber"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-controller="Customer" asp-action="GetCustomerList">Back to List</a>
+</form>
